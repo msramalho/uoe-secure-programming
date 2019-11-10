@@ -31,16 +31,19 @@ Note: The patch fixes the above problem, but leaves the final program still vuln
 
 ## 5
 ### Vulnerability 1
+overflow at `gets`
 #### Description
 #### Exploit
 #### Consequences
 
 ### Vulnerability 2
+bruteforce (sleep between while iterations)
 #### Description
 #### Exploit
 #### Consequences
 
 ### Vulnerability 3
+strcmp will return <0 if user < USER
 #### Description
 #### Exploit
 #### Consequences

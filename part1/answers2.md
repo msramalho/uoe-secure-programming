@@ -30,20 +30,51 @@ As for the username `"attacker"` and message `"pwned message"`, they were consta
 Note: The patch fixes the above problem, but leaves the final program still vulnerable to race-condition attacks. This is out of scope of this task, but could be achieved using [seteuid](http://man7.org/linux/man-pages/man2/seteuid.2.html)
 
 ## 5
-### Vulnerability 1
-overflow at `gets`
+<!-- ### Vulnerability 1
+plaintext password
 #### Description
+The program contains plain text user and password values.
+
 #### Exploit
+This means that anyone with access to the compiled code could find out what the password (same goes for the user) with simple reverse engineering techniques and programs. 
+
 #### Consequences
+An attacker can easily access the protected resource by uncovering the expected value for the password.  -->
+<!-- plaintext password -->
+
+### Vulnerability 1
+<!-- Denial of Service, from the bruteforce attack -->
+#### Description
+The program  is susceptible to be used for denial of services on the running machine. 
+
+#### Exploit
+A simple exploit involves writing a script that constantly sends the same (wrong) credentials to the program resulting in keeping it occupied and stealing system resources unnecessarily.
+
+#### Consequences
+Denial of service itsels is the consequence which, depending on how valuable computer resources are in the machine where the script is running, migh have a larger or smaller impact for the developers.  
 
 ### Vulnerability 2
-bruteforce (sleep between while iterations)
+<!-- bruteforce (sleep between while iterations) -->
 #### Description
+Multiple login attempts can be tried in a small amount of time, this is due to the fact that the only steps between login attempts are asking for the new user/pass combination.
+This makes it vulnerable to a bruteforce attack.
+
 #### Exploit
+An attacker can easily design an attack that tries multiple user/password combinations. This exploit could be even more powerful by using a dictionary attack (of common passwords) and even more so if there is any knowledge about the username.
+
 #### Consequences
+The consequences are straightforward: an attacker could eventually guess and know the user/password combination that would unlock this script. Naturally, in a real scenario that user/pass combination could even be use in other settings and prove to be more damaging than at first thought.
 
 ### Vulnerability 3
-strcmp will return <0 if user < USER
+<!-- overflow at `gets` -->
 #### Description
+Usage of `gets` which is non advisable as it can lead to overflows, as it will try to copy the n-length user input string into a 20 characters long array.
+
 #### Exploit
+This vulnerability can be exploited by failing inserting a wrong user/pass pair for the first check and then by introducing large values when prompted for the username and password again.
+
 #### Consequences
+The consequences can be many, from program interruption to incorrect behaviour or calculation resulting from memory corruption. 
+
+### Other Vulnerabilities
+* plain text username and password in compiled code (solution-> use hashing function)

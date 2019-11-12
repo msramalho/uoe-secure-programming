@@ -1,5 +1,5 @@
 2559a2560,2565
-> 	unsigned int min_length = 1 + 2 + padding; /* 1 bit fpr heartbeat type, 2 for heartbeat length */
+> 	unsigned int min_length = 1 + 2 + padding; /* 1 bit for heartbeat type, 2 for heartbeat length */
 > 
 > 	if (s->msg_callback)
 > 		s->msg_callback(0, s->version, TLS1_RT_HEARTBEAT,

@@ -7,7 +7,7 @@
 > 			s, s->msg_callback_arg);
 2563a2570,2571
 > 	// discard if HEARTBLEED
-> 	if (min_length = payload > s->s3->rrec.length) return 0;
+> 	if (min_length + payload > s->s3->rrec.length) return 0;
 2566,2569d2573
 < 	if (s->msg_callback)
 < 		s->msg_callback(0, s->version, TLS1_RT_HEARTBEAT,

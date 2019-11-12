@@ -1,0 +1,15 @@
+2559a2560,2565
+> 	unsigned int min_length = 1 + 2 + padding; /* 1 bit fpr heartbeat type, 2 for heartbeat length */
+> 
+> 	if (s->msg_callback)
+> 		s->msg_callback(0, s->version, TLS1_RT_HEARTBEAT,
+> 			&s->s3->rrec.data[0], s->s3->rrec.length,
+> 			s, s->msg_callback_arg);
+2563a2570,2571
+> 	// discard if HEARTBLEED
+> 	if (min_length = payload > s->s3->rrec.length) return 0;
+2566,2569d2573
+< 	if (s->msg_callback)
+< 		s->msg_callback(0, s->version, TLS1_RT_HEARTBEAT,
+< 			&s->s3->rrec.data[0], s->s3->rrec.length,
+< 			s, s->msg_callback_arg);

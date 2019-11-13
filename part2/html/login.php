@@ -1,5 +1,4 @@
 <?php
-//setup
 require_once("include/functions.php");
 post_only();
 

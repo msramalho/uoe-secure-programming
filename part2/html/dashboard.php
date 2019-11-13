@@ -1,19 +1,23 @@
+<?php require_once("include/functions.php");
+// $_SESSION["username"] = "lelel";
+?>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Super Secure Digital Signature Service</title>
+	<title>Dashboard</title>
 
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+
 <body>
-	<?php
-	ini_set('display_errors', 'On');
-	include 'include/functions.php';
-	?>
 	<div class="jumbotron">
-		<h1>Super Secure Digital Signature Service</h1>
+		<?php
+			var_dump($_SESSION);
+		?>
+		<h1>Dashboard for <?= htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8'); ?></h1>
 	</div>
 
 	<div class="container">

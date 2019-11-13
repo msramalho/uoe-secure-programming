@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 'On');
+session_start();
+
 // Reload the page
 function reload_page()
 {
@@ -63,52 +66,61 @@ function signup($username, $password)
 // Create a session token
 function create_token($username)
 {
-    setcookie("username", $username);
-    setcookie("session", md5($username));
+    // global $_SESSION;
+    // setcookie("username", $username);
+    // setcookie("session", md5($username));
+    $_SESSION["username"] = $username;
 }
 
 // Check a session token
-function check_token($username, $session)
+function check_token($username)
 {
-    return (md5($username) == $session);
+    // global $_SESSION;
+    // return (md5($username) == $session);
+    return isset($_SESSION["username"]);
 }
 
 // Destroy the session token
 function logout()
 {
-    setcookie("username", "", time() - 3600);
-    setcookie("session", "", time() - 3600);
+    // setcookie("username", "", time() - 3600);
+    // setcookie("session", "", time() - 3600);
+    session_destroy();
+    session_start();
 }
 
 function login($username, $password)
 {
     logout();
-
     try {
         $db = get_db();
-
-
         $check = $db->prepare("SELECT password FROM users WHERE username=:name");
         $check->bindParam(':name', $username);
-        $result = $check->execute();
+        $check->execute();
         $hash = $check->fetch();
-        return password_verify($password, $hash["password"]);
+        if(password_verify($password, $hash["password"])){
+            // create_token($username);
+            $_SESSION["username"] = $username;
+            return True;
+        }
     } catch (PDOException $e) {
         print($e->getMessage());
     }
+    return False;
 }
 
 // Check if there is a user signed in
 function check_signed_in()
 {
-    if (isset($_COOKIE['username'], $_COOKIE['session'])) {
-        if (check_token($_COOKIE['username'], $_COOKIE['session'])) {
-            return True;
-        } else {
-            logout();
-        }
-    }
-    return False;
+    return isset($_SESSION["username"]);
+    // if (isset($_COOKIE['username'], $_COOKIE['session'])) {
+    //     if (check_token($_COOKIE['username'], $_COOKIE['session'])) {
+    //         return True;
+    //     } else {
+    //         logout();
+    //     }
+    // }
+    // return False;
 }
 
 

@@ -1,3 +1,4 @@
+<?php require_once("include/functions.php"); ?>
 <html lang="en">
 
 <head>
@@ -18,10 +19,6 @@
 </head>
 
 <body>
-	<?php
-	ini_set('display_errors', 'On');
-	include 'include/functions.php';
-	?>
 	<div class="jumbotron">
 		<h1>Super Secure Digital Signature Service</h1>
 	</div>

@@ -149,3 +149,15 @@ function is_password_secure($password)
 {
     return strlen($password) > 5;
 }
+
+
+function get_public_key(){
+    if(!check_signed_in()) echo_and_die("invalid session");
+    $username = md5($_SESSION["username"]); //md5 is just to avoid spaces and so on
+    return file_get_contents("./keys/$username.pub");
+}
+function get_private_key(){
+    if(!check_signed_in()) echo_and_die("invalid session");
+    $username = md5($_SESSION["username"]); //md5 is just to avoid spaces and so on
+    return file_get_contents("./keys/$username.pri");
+}

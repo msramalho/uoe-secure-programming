@@ -63,7 +63,7 @@ After a successful register/login action the authenticated user is redirected to
 In the dashboard, the user need only click the `Export Public Key` link that will trigger the `export.php` to download the public key in .pem format. 
 
 ### c Digital Signing
-In the dashboard, the user need only input a message and click the `Sign message` link, this will redirect the user to a new page (`sign.php`) with the signed message.
+In the dashboard, the user need only input a message and click the `Sign message` link, this will redirect the user to a new page (`sign.php`) with the signed message. The signed message is encoded in base 64, which means the digital signature verification will perform the decoding.
 
 ### d Digital Signature Verification
 In the dashboard, the user need only input a message, paste in the signed message, choose a pem file and then click `Verify Digital Signature`, this will redirect the user to a new screen (`verify.php`) which will display the result of the verification as either `"This digital signature is valid"` or  `"This digital signature is NOT valid"`.

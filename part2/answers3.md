@@ -101,7 +101,7 @@ To avoid this, the passwords are now being hashed with the default algorithm the
 
 The authentication also uses the advised method `password_verify` that performs the password comparison in a time-safe manner. 
 
-Naturally, mechanisms like two-step authentication would bring an extra layer of security but those were a bit overkill for the case in hand :)
+Naturally, mechanisms like two-step authentication would bring an extra layer of security but those were a bit overkill for the case in hand.
 
 ### Mitigation 6
 The final mitigation that is being described is that the database used was both publicly accessible and publicly readable.

@@ -1,3 +1,5 @@
+# 3 - Secure Server Management
+
 ## Used tools
 <!-- linux packages, browser plugins, ... -->
 * scp to get/send files into the VM over ssh

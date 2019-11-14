@@ -3,17 +3,8 @@
 require_once("include/functions.php");
 post_only();
 logout();
-// $db = get_db();
-//check validity of data
-// if (!check_uniqueness($db, $_POST["username"]))	echo_and_die("Username must be unique");
-// if (!is_password_secure($_POST["password"])) echo_and_die("Password is not secure");
+
 if(!signup($_POST["username"], $_POST["password"])) exit();
-
-
-// $pubKey = "public";
-// $priKey = "private";
-
-// var_dump(openssl_error_string());
 
 // get private, public keys
 $res = openssl_pkey_new(["private_key_bits" => 2048, "private_key_type" => OPENSSL_KEYTYPE_RSA]);

@@ -127,6 +127,13 @@ function check_signed_in()
     // return False;
 }
 
+function login_only(){
+    if(!check_signed_in()){
+        header("Location: index.php?error=login%20required");
+        exit();
+    }
+}
+
 
 //is there a post request
 function is_post()
@@ -158,7 +165,7 @@ function is_password_secure($password)
 function get_public_key(){
     if(!check_signed_in()) echo_and_die("invalid session");
     $username = md5($_SESSION["username"]); //md5 is just to avoid spaces and so on
-    return file_get_contents("./keys/$username.pub");
+    return file_get_contents("./keys/$username.pem");
 }
 function get_private_key(){
     if(!check_signed_in()) echo_and_die("invalid session");

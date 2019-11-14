@@ -1,4 +1,6 @@
-<?php require_once("include/functions.php"); ?>
+<?php require_once("include/functions.php"); 
+login_only();
+?>
 <html lang="en">
 
 <head>
@@ -29,7 +31,7 @@
 		<hr>
 
 		<h1>Digital Signature Verification</h1>
-		<form name="verify" class="form-horizontal" action="sign.php" method="post">
+		<form name="verify" class="form-horizontal" action="verify.php" method="post" enctype="multipart/form-data" >
 			<textarea name="message" id="message" placeholder="your message to verify (max 10000 chars)" style="width:50%;"></textarea>
 			<br>
 			<textarea name="signed" id="signed" placeholder="your signed message" style="width:50%;"></textarea>

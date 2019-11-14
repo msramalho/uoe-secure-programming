@@ -1,5 +1,7 @@
 <?php
 ini_set('display_errors', 'On');
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 
 // Reload the page
@@ -54,12 +56,14 @@ function signup($username, $password)
         if (check_uniqueness($db, $username)) {
             //TODO: could verify that password is "secure enough"
             add_user($db, $username, $password);
+            return True;
         } else {
             print("<p>Username '{$username}' is already registered.</p>");
         }
     } catch (PDOException $e) {
         print($e->getMessage());
     }
+    return False;
 }
 
 

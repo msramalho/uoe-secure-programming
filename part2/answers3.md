@@ -43,3 +43,7 @@ The steps taken to fix the bug were:
 6. created the diff for the `ssl/t1_lib.c` file
 
 
+## 3.3 
+
+Changed files: /etc/php/php.ini, /etc/httpd/conf/httpd.conf
+`scp -P2222 ./httpd.conf user@localhost:/etc/httpd/conf/httpd.conf`

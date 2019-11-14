@@ -1,5 +1,4 @@
 <?php
-//setup
 require_once("include/functions.php");
 post_only();
 logout();
@@ -21,14 +20,3 @@ file_put_contents("./keys/$username.pri", $priKey);
 
 login($_POST["username"], $_POST["password"]);
 header("Location: dashboard.php");
-
-
-
-/* Encrypt the data using the public key
- * The encrypted data is stored in $encrypted */
-// openssl_public_encrypt($data, $encrypted, $pubKey);
-
-/* Decrypt the data using the private key and store the
- * result in $decrypted. */
-// openssl_private_decrypt($encrypted, $decrypted, $privKey);
-

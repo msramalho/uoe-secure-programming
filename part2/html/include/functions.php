@@ -1,26 +1,19 @@
 <?php
-ini_set('display_errors', 'On');
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 'On');
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 session_start();
 
-// Reload the page
-function reload_page()
-{
-    print("<script>location.reload()</script>");
-}
 
 // Get the database
-function get_db()
-{
+function get_db() {
     $db = new PDO('sqlite:db/ds_service.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $db;
 }
 
 // Check if user exists
-function check_uniqueness($db, $username)
-{
+function check_uniqueness($db, $username) {
     $check = $db->prepare("SELECT * FROM users WHERE username=:name");
     $check->bindParam(':name', $username);
     $result = $check->execute();
